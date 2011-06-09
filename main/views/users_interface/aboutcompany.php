@@ -10,6 +10,9 @@
 			<img src="<?=$baseurl;?>text/viewimage/<?=$content['id'];?>"class="floated" alt=""/>
 		<?php endif; ?>
 			<?=$content['text'];?>
+		<?php if($userinfo['status']):?>
+			<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'],'Изменить');?></div>
+		<?php endif;?>
 		</div>
 	</div>
 	<div class="grid_5">

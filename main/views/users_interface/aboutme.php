@@ -10,6 +10,12 @@
 			<img src="<?=$baseurl;?>text/viewimage/<?=$content['id'];?>"class="floated" alt=""/>
 		<?php endif; ?>
 			<?=$content['text'];?>
+		<?php if($userinfo['status']):?>
+			<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'],'Изменить');?></div>
+		<?php endif;?>
+		</div>
+		<div class="form-send-mail">
+			<?php $this->load->view('users_interface\formsendmail');?>
 		</div>
 	</div>
 	<div class="grid_5">

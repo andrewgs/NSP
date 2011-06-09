@@ -16,8 +16,6 @@ $route['organ/:num/product/:num'] = "users_interface/product";
 $route['news/:num'] = "users_interface/news";
 $route['news'] = "users_interface/allnews";
 /* ----------------------------------- authorization/shutdown ---------------------------------------------*/
-$route['authorization'] = "users_interface/authorization";
-$route['shutdown'] = "users_interface/shutdown";
 $route['admin']	= "users_interface/admin_login";
 /* ------------------------------------------ views -------------------------------------------------------*/
 $route['news/viewimage/:num'] = "users_interface/viewimage";
@@ -33,3 +31,18 @@ $route['product/viewimage/:num'] = "users_interface/viewimage";
 /* ------------------------------------------ other -------------------------------------------------------*/
 
 /************************************	ADMIN INTRERFACE	***********************************************/
+$route['profile'] = "admin_interface/profile";
+$route['shutdown'] = "admin_interface/shutdown";
+$route['admin/text-edit/:num'] = "admin_interface/text_edit";
+
+$route['admin/certificates-edit/:num'] = "admin_interface/certificates_edit";
+$route['admin/certificates-delete/:num'] = "admin_interface/certificates_delete";
+$route['admin/certificates-add'] = "admin_interface/certificates_add";
+
+$route['admin/organs-add'] = "admin_interface/organs_add";
+$route['admin/organs-edit/:num'] = "admin_interface/organs_edit";
+$route['admin/organs-delete/:num'] = "admin_interface/organs_delete";
+
+$route['admin/product-add'] = "admin_interface/product_add";
+$route['admin/product-edit/:num'] = "admin_interface/product_edit";
+$route['admin/product-delete/:num'] = "admin_interface/product_delete";

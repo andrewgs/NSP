@@ -16,6 +16,14 @@
 							</ul>
 						</li>
 						<li><?=anchor('products','Продукция');?></li>
+					<?php if($userinfo['status']):?>
+						<li><?=anchor('#','Администратор');?>
+							<ul>
+								<li><?=anchor('profile','Профиль');?></li>
+								<li><?=anchor('shutdown','Выход');?></li>
+							</ul>
+						</li>
+					<?php endif;?>
 					</ul>
 					<span class="rightcorner pngfix"></span>
 				</div>

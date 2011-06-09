@@ -8,6 +8,9 @@
 		<div class="box-content services">
 			<?=$content['text'];?>
 			<div class="clear"></div>
+		<?php if($userinfo['status']):?>
+			<div class="admin-link"><?=anchor('admin/certificates-add/','Добавить');?></div>
+		<?php endif;?>
 		<?php for($i=0;$i<count($certificates);$i++):?>
 			<div class="grid_5">
 				<div class="certificates">
@@ -15,6 +18,10 @@
 					<div class="cert-title"><?=$certificates[$i]['title'];?></div>
 					<div class="cert-content"><?=$certificates[$i]['text'];?></div>
 				</div>
+			<?php if($userinfo['status']):?>
+				<div class="admin-link"><?=anchor('admin/certificates-edit/'.$certificates[$i]['id'],'Изменить');?></div>
+				<div class="admin-link"><?=anchor('admin/certificates-delete/'.$certificates[$i]['id'],'Удалить');?></div>
+			<?php endif;?>
 			</div>
 			<?php if($i>0 and ($i+1)%2==0):?>
 				<div class="clear"></div>

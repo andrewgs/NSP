@@ -8,6 +8,9 @@
 		<div class="box-content services">
 			<?=$content['text'];?>
 			<div class="clear"></div>
+		<?php if($userinfo['status']):?>
+			<div class="admin-link"><?=anchor('admin/organs-add/','Добавить');?></div>
+		<?php endif;?>
 		<?php for($i=0;$i<count($organs);$i++):?>
 			<div class="grid_3">
 				<div class="organs">
@@ -15,6 +18,10 @@
 					<div class="organs-title"><?=anchor('organ/'.$organs[$i]['id'],$organs[$i]['title']);?></div>
 					<div class="organs-content"><?=$organs[$i]['text'];?></div>
 				</div>
+			<?php if($userinfo['status']):?>
+				<div class="admin-link"><?=anchor('admin/organs-edit/'.$organs[$i]['id'],'Изменить');?></div>
+				<div class="admin-link"><?=anchor('admin/organs-delete/'.$organs[$i]['id'],'Удалить');?></div>
+			<?php endif;?>
 			</div>
 			<?php if($i>0 and ($i+1)%3==0):?>
 				<div class="clear"></div>

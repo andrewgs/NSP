@@ -4,19 +4,10 @@
 <body>
 <?php $this->load->view('users_interface\header');?>
 <div class="container_16">
-	<div class="grid_11 sepline">
+	<div class="grid_12">
 		<div class="box-content services">
-		<?php if($content['imgexist']):?>
-			<img src="<?=$baseurl;?>text/viewimage/<?=$content['id'];?>"class="floated" alt=""/>
-		<?php endif; ?>
-			<?=$content['text'];?>
-			<?php if($userinfo['status']):?>
-				<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'],'Изменить');?></div>
-			<?php endif;?>
+			<?php $this->load->view('users_interface\formlogin');?>
 		</div>
-	</div>
-	<div class="grid_5">
-		<?php $this->load->view('users_interface\rightside');?>
 	</div>
 </div>
 <div class="clear"></div>

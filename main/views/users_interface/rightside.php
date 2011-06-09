@@ -1,6 +1,9 @@
 <div class="box-content contact">
 	<img src="<?=$baseurl;?>sowner/viewimage/<?=$contacts['id'];?>"class="floated" alt=""/>
 	<?=$contacts['text'];?>
+	<?php if($userinfo['status']):?>
+		<div class="admin-link"><?=anchor('admin/text-edit/'.$contacts['id'],'Изменить');?></div>
+	<?php endif;?>
 </div>
 <div class="box-content">
 	<div class="back">
