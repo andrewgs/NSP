@@ -11,7 +11,7 @@
 		<?php endif; ?>
 			<?=$content['text'];?>
 		<?php if($userinfo['status']):?>
-			<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'],'Изменить');?></div>
+			<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'].'/about-me','Изменить контент');?></div>
 		<?php endif;?>
 		</div>
 		<div class="form-send-mail">

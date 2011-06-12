@@ -17,7 +17,7 @@
 			<div class="clear"></div>
 			<hr size="2"/>
 		<?php if($userinfo['status']):?>
-			<div class="admin-link"><?=anchor('admin/product-add/','Добавить продукт');?></div>
+			<div class="admin-link"><?=anchor('admin/'.$this->uri->uri_string().'/product-add','Добавить продукт');?></div>
 		<?php endif;?>
 		<?php for($i=0;$i<count($products);$i++):?>
 			<div class="products">
@@ -26,8 +26,8 @@
 				<div class="products-content"><?=$products[$i]['text'];?></div>
 			</div>
 			<?php if($userinfo['status']):?>
-				<div class="admin-link"><?=anchor('admin/product-edit/'.$products[$i]['id'],'Изменить');?></div>
-				<div class="admin-link"><?=anchor('admin/product-delete/'.$products[$i]['id'],'Удалить');?></div>
+				<div class="admin-link"><?=anchor('admin/'.$this->uri->uri_string().'/product-edit/'.$products[$i]['id'],'Изменить');?></div>
+				<div class="admin-link"><?=anchor('admin/'.$this->uri->uri_string().'/product-delete/'.$products[$i]['id'],'Удалить');?></div>
 			<?php endif;?>
 			<div class="clear"></div>
 		<?php endfor;?>

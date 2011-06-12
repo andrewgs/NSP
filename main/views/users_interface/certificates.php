@@ -6,10 +6,16 @@
 <div class="container_16">
 	<div class="grid_11 sepline">
 		<div class="box-content services">
+		<?php if($content['imgexist']):?>
+			<img src="<?=$baseurl;?>text/viewimage/<?=$content['id'];?>"class="floated" alt=""/>
+		<?php endif; ?>
 			<?=$content['text'];?>
+		<?php if($userinfo['status']):?>
+			<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'].'/certificates-company','Изменить контент');?></div>
+		<?php endif;?>
 			<div class="clear"></div>
 		<?php if($userinfo['status']):?>
-			<div class="admin-link"><?=anchor('admin/certificates-add/','Добавить');?></div>
+			<div class="admin-link"><?=anchor('admin/certificates-add','Добавить сертификат');?></div>
 		<?php endif;?>
 		<?php for($i=0;$i<count($certificates);$i++):?>
 			<div class="grid_5">

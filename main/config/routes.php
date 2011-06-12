@@ -15,13 +15,13 @@ $route['organ/:num'] = "users_interface/organ_type";
 $route['organ/:num/product/:num'] = "users_interface/product";
 $route['news/:num'] = "users_interface/news";
 $route['news'] = "users_interface/allnews";
+$route['mail-sucessfull'] = "users_interface/mail_sucessfull";
 /* ----------------------------------- authorization/shutdown ---------------------------------------------*/
 $route['admin']	= "users_interface/admin_login";
 /* ------------------------------------------ views -------------------------------------------------------*/
 $route['news/viewimage/:num'] = "users_interface/viewimage";
 $route['text/viewimage/:num'] = "users_interface/viewimage";
 $route['certificates/viewimage/:num'] = "users_interface/viewimage";
-$route['sowner/viewimage/:num'] = "users_interface/viewimage";
 $route['owner/viewimage/:num'] = "users_interface/viewimage";
 $route['organs/viewimage/:num'] = "users_interface/viewimage";
 $route['sorgans/viewimage/:num'] = "users_interface/viewimage";
@@ -34,6 +34,12 @@ $route['product/viewimage/:num'] = "users_interface/viewimage";
 $route['profile'] = "admin_interface/profile";
 $route['shutdown'] = "admin_interface/shutdown";
 $route['admin/text-edit/:num'] = "admin_interface/text_edit";
+$route['admin/text-edit/:num/about-me'] = "admin_interface/text_edit";
+$route['admin/text-edit/:num/about-company'] = "admin_interface/text_edit";
+$route['admin/text-edit/:num/products'] = "admin_interface/text_edit";
+$route['admin/text-edit/:num/contact'] = "admin_interface/text_edit";
+$route['admin/text-edit/:num/certificates-company'] = "admin_interface/text_edit";
+$route['admin/text-edit/:num/products'] = "admin_interface/text_edit";
 
 $route['admin/certificates-edit/:num'] = "admin_interface/certificates_edit";
 $route['admin/certificates-delete/:num'] = "admin_interface/certificates_delete";
@@ -43,6 +49,10 @@ $route['admin/organs-add'] = "admin_interface/organs_add";
 $route['admin/organs-edit/:num'] = "admin_interface/organs_edit";
 $route['admin/organs-delete/:num'] = "admin_interface/organs_delete";
 
-$route['admin/product-add'] = "admin_interface/product_add";
-$route['admin/product-edit/:num'] = "admin_interface/product_edit";
-$route['admin/product-delete/:num'] = "admin_interface/product_delete";
+$route['admin/organ/:num/product-add'] = "admin_interface/product_add";
+$route['admin/organ/:num/product-edit/:num'] = "admin_interface/product_edit";
+$route['admin/organ/:num/product-delete/:num'] = "admin_interface/product_delete";
+
+$route['admin/news-add'] = "admin_interface/news_add";
+$route['admin/news-edit/:num'] = "admin_interface/news_edit";
+$route['admin/news-delete/:num'] = "admin_interface/news_delete";

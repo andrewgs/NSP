@@ -6,13 +6,7 @@
 <div class="container_16">
 	<div class="grid_11 sepline">
 		<div class="box-content services">
-		<?php if($content['imgexist']):?>
-			<img src="<?=$baseurl;?>text/viewimage/<?=$content['id'];?>"class="floated" alt=""/>
-		<?php endif; ?>
-			<?=$content['text'];?>
-			<?php if($userinfo['status']):?>
-				<div class="admin-link"><?=anchor('admin/text-edit/'.$content['id'],'Изменить контент');?></div>
-			<?php endif;?>
+			Письмо отправлено! Спасибо что пользуетесь нашим сайтом.
 		</div>
 	</div>
 	<div class="grid_5">

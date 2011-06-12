@@ -6,6 +6,9 @@
 <div class="container_16">
 	<div class="grid_11 sepline">
 		<div class="box-content services">
+		<?php if($userinfo['status']):?>
+			<div class="admin-link"><?=anchor('admin/news-add','Добавить новость');?></div>
+		<?php endif;?>
 		<?php for($i=0;$i<count($content);$i++):?>
 			<div class="news" style="margin-top:10px;">
 				<div class="news-date"><?=$content[$i]['bdate'];?></div>
@@ -15,6 +18,11 @@
 				<div class="news-title"><?=anchor('news/'.$content[$i]['id'],$content[$i]['title']);?></div>
 				<div class="news-content"><?=$content[$i]['text'];?></div>
 			</div>
+			<div class="clear"></div>
+			<?php if($userinfo['status']):?>
+				<div class="admin-link"><?=anchor('admin/news-edit/'.$content[$i]['id'],'Изменить');?></div>
+				<div class="admin-link"><?=anchor('admin/news-delete/'.$content[$i]['id'],'Удалить');?></div>
+			<?php endif;?>
 			<div class="clear"></div>
 		<?php endfor;?>
 		</div>

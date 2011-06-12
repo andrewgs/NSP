@@ -2,13 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php $this->load->view('admin_interface\head');?>
+	<?php $this->load->view('admin_interface\fckeditor');?>
+	<?php $this->load->view('admin_interface\datepacker');?>
 </head>
 <body>
 <?php $this->load->view('admin_interface\header');?>
 <div class="container_16">
 	<div class="grid_12">
+		<div class="back">
+			<?=anchor('news','Вернуться назад');?>
+		</div>
 		<div class="box-content services">
-			<?php $this->load->view('admin_interface\formprofile');?>
+			<?php $this->load->view('admin_interface\formnewsedit');?>
 		</div>
 	</div>
 </div>

@@ -2,7 +2,7 @@
 
 class Users_interface extends CI_Controller {
 
-	var $user = array('uid'=>0,'uname'=>'','ulogin'=>'','upassword'=>'','status'=>FALSE);
+	var $user = array('uid'=>0,'uname'=>'','ulogin'=>'','upassword'=>'','uemail'=>'','status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля",
 						"05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа",
 						"09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
@@ -34,7 +34,7 @@ class Users_interface extends CI_Controller {
 			
 			if($this->session->userdata('login_id') != md5($this->user['ulogin'].$this->user['upassword'])):
 				$this->user['status'] = FALSE;
-//				$this->user = array();
+				$this->user = array();
 			endif;
 		endif;
 	}
@@ -85,6 +85,7 @@ class Users_interface extends CI_Controller {
 		if($this->input->post('submit')):
 			$this->form_validation->set_rules('name','"Имя"','required|htmlspecialchars|strip_tags|trim');
 			$this->form_validation->set_rules('email','"E-mail"','valid_email|required|trim');
+			$this->form_validation->set_rules('subject','"Тема"','required|trim');
 			$this->form_validation->set_rules('note','"Сообщение"','required|strip_tags');
 			$this->form_validation->set_error_delimiters('<div class="fvalid_error">','</div>');
 			if(!$this->form_validation->run()):
@@ -94,6 +95,13 @@ class Users_interface extends CI_Controller {
 			else:
 				$_POST['submit'] = NULL;
 				$pagevar['status'] = TRUE;
+				if($this->sendmail($this->user['uemail'],$_POST['note'],$_POST['subject'],$_POST['email'])):
+					$this->session->set_userdata('mail',TRUE);
+					redirect('mail-sucessfull');
+				else:
+					$this->email->print_debugger();
+					exit;
+				endif;
 			endif;
 		endif;
 			
@@ -288,7 +296,7 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON Новости',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -318,14 +326,18 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON Список новостей',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
 					'contacts'		=> array(),
 					'news'			=> array(),
 			);
-		$pagevar['content'] = $this->newsmodel->read_records();
+		if(!$this->user['status']):
+			$pagevar['content'] = $this->newsmodel->read_records();
+		else:
+			$pagevar['content'] = $this->newsmodel->read_all_records();
+		endif;
 		for($i=0;$i<count($pagevar['content']);$i++):
 			$pagevar['content'][$i]['full_text'] = $pagevar['content'][$i]['text'];
 			$pagevar['content'][$i]['bdate'] = $this->operation_date($pagevar['content'][$i]['bdate']);
@@ -350,6 +362,36 @@ class Users_interface extends CI_Controller {
 		endfor;
 		
 		$this->load->view('users_interface/allnews',$pagevar);
+	}
+
+	function mail_sucessfull(){
+		
+		if(!$this->session->userdata('mail')):
+			redirect('about-me');
+		endif;
+		
+		$pagevar = array(
+					'description'	=> '',
+					'title'			=> 'NSP-DON Отправка письма',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'contacts'		=> array(),
+					'news'			=> array(),
+			);
+		$pagevar['contacts'] = $this->textmodel->read_record(10);
+		$pagevar['news'] = $this->newsmodel->read_limit_records(3);
+		for($i=0;$i<count($pagevar['news']);$i++):
+			$pagevar['news'][$i]['full_text'] = $pagevar['news'][$i]['text'];
+			$pagevar['news'][$i]['bdate'] = $this->operation_date($pagevar['news'][$i]['bdate']);
+			if(mb_strlen($pagevar['news'][$i]['text'],'UTF-8') > 250):									
+				$pagevar['news'][$i]['text'] = mb_substr($pagevar['news'][$i]['text'],0,250,'UTF-8');	
+				$pos = mb_strrpos($pagevar['news'][$i]['text'],' ',0,'UTF-8');
+				$pagevar['news'][$i]['text'] = mb_substr($pagevar['news'][$i]['text'],0,$pos,'UTF-8');
+				$pagevar['news'][$i]['text'] .= ' ... ';
+			endif;
+		endfor;
+		$this->session->unset_userdata('mail');
+		$this->load->view('users_interface/mail-sucessfull',$pagevar);
 	}
 
 	/*********************************************************************************************************************/
@@ -393,8 +435,6 @@ class Users_interface extends CI_Controller {
 		$section = $this->uri->segment(1);
 		$id = $this->uri->segment(3);
 		switch ($section){
-			case 'sowner'			: $image = $this->usermodel->get_simage($id); break;
-			case 'owner'			: $image = $this->usermodel->get_image($id); break;
 			case 'news' 			: $image = $this->newsmodel->get_image($id); break;
 			case 'text' 			: $image = $this->textmodel->get_image($id); break;
 			case 'certificates' 	: $image = $this->certificatesmodel->get_image($id); break;
@@ -432,5 +472,22 @@ class Users_interface extends CI_Controller {
 		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";
 		$replacement = "\$5-\$3-\$1"; 
 		return preg_replace($pattern, $replacement,$field);
-	}				
+	}
+											
+	function sendmail($email,$msg,$subject,$from){
+		
+		$config['smtp_host'] = 'localhost';
+		$config['charset'] = 'utf-8';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+		$this->email->from($from,'Администрация сайта');
+		$this->email->to($email);
+		$this->email->bcc('');
+		$this->email->subject($subject);
+		$this->email->message(strip_tags($msg));
+		if (!$this->email->send()):
+			return FALSE;
+		endif;
+		return TRUE;
+	}			
 }

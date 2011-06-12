@@ -1,8 +1,8 @@
 <div class="box-content contact">
-	<img src="<?=$baseurl;?>sowner/viewimage/<?=$contacts['id'];?>"class="floated" alt=""/>
+	<img src="<?=$baseurl;?>text/viewimage/<?=$contacts['id'];?>"class="floated" alt=""/>
 	<?=$contacts['text'];?>
 	<?php if($userinfo['status']):?>
-		<div class="admin-link"><?=anchor('admin/text-edit/'.$contacts['id'],'Изменить');?></div>
+		<div class="admin-link"><?=anchor('admin/text-edit/'.$contacts['id'].'/contact','Изменить контакты');?></div>
 	<?php endif;?>
 </div>
 <div class="box-content">
