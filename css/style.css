@@ -57,7 +57,7 @@ a{
 	
 p{
 		margin:0 0 10px 0;
-		font:normal 12px/20px "Lucida Sans",  Arial, Verdana, Helvetica, sans-serif;
+		font:normal 13px/20px "Lucida Sans",  Arial, Verdana, Helvetica, sans-serif;
 		color:#777;
 		}		
 
@@ -182,13 +182,14 @@ h6{
 /************************
 	CONTENT
 *************************/		
-.box-content{
-		padding:0px 10px 15px 10px;
-		}
+.box-content {
+	font: 13px/23px helvetica,arial,sans-serif;
+	padding: 0 10px 15px;
+}
 		
-.sepline{
-		background:url(../images/sep-line.gif) top right repeat-y;
-		}	
+.sepline {
+	background:url(../images/sep-line.gif) top right repeat-y;
+}	
 
 /************************
 	MID CONTENT LISTS
@@ -464,7 +465,7 @@ a.links:hover{
 		width:auto;
 		height:46px;
 		background:#dce6eb;
-		border-top:6px solid #d2dfe5;
+		border-top:6px solid #AFC1C9;
 		}
 
 		.footer_left{
@@ -549,4 +550,18 @@ span.necessarily{
 }
 .small-text-form-input{
 	width: 100px;
+}
+
+/*
+-------------------------------------*/
+.news-title {
+	color: #00919F;
+	font: bold 13px helvetica,arial,sans-serif;
+}
+.news-date {
+	border-bottom: 1px solid #eee;
+	color: #ccc;
+	font: 12px helvetica,arial,sans-serif;
+	margin: 3px 0 5px;
+	padding-bottom: 5px;
 }
