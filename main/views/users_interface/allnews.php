@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	<div class="grid_5">
-		<?php $this->load->view('users_interface/rightside');?>
+		<?php $this->load->view('users_interface/contacts');?>
 	</div>
 </div>
 <div class="clear"></div>

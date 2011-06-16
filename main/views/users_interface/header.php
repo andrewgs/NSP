@@ -9,7 +9,7 @@
 					<ul class="sf-menu">
 						<li><?=anchor('','Главная');?></li>
 						<li><?=anchor('about-me','Обо мне');?></li>
-						<li><?=anchor('#','О компании');?>
+						<li><a href="javascript:void(0)">О компании</a>
 							<ul>
 								<li><?=anchor('about-company','Информация');?></li>
 								<li><?=anchor('certificates-company','Сертификаты');?></li>
@@ -17,7 +17,7 @@
 						</li>
 						<li><?=anchor('products','Продукция');?></li>
 					<?php if($userinfo['status']):?>
-						<li><?=anchor('#','Администратор');?>
+						<li><a href="javascript:void(0)">Администратор</a>
 							<ul>
 								<li><?=anchor('profile','Профиль');?></li>
 								<li><?=anchor('shutdown','Выход');?></li>

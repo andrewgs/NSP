@@ -20,6 +20,7 @@
 		</div>
 	</div>
 	<div class="grid_5">
+		<?php $this->load->view('users_interface/contacts');?>
 		<?php $this->load->view('users_interface/rightside');?>
 	</div>
 </div>
