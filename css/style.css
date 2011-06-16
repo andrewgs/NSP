@@ -57,7 +57,7 @@ a{
 	
 p{
 		margin:0 0 10px 0;
-		font:normal 13px/20px "Lucida Sans",  Arial, Verdana, Helvetica, sans-serif;
+		font:normal 13px/21px "Lucida Sans",  Arial, Verdana, Helvetica, sans-serif;
 		color:#777;
 		}		
 
@@ -104,7 +104,7 @@ h1{
 
 h2{
 		color:#555;
-		font:normal 24px/28px  "Lucida Sans", Arial, Helvetica, sans-serif;
+		font:normal 21px/28px  "Lucida Sans", Arial, Helvetica, sans-serif;
 		letter-spacing:-1px;
 		margin:0 0 5px 0;
 		}
@@ -184,7 +184,7 @@ h6{
 *************************/		
 .box-content {
 	font: 13px/23px helvetica,arial,sans-serif;
-	padding: 0 10px 15px;
+	padding: 0 15px 15px 10px;
 }
 		
 .sepline {
@@ -465,12 +465,13 @@ a.links:hover{
 		width:auto;
 		height:46px;
 		background:#dce6eb;
-		border-top:6px solid #AFC1C9;
+		border-top:1px solid #AFC1C9;
 		}
 
 		.footer_left{
-				float:left;
-				}
+			float: left;
+			margin-left: 20px;
+		}
 
 				.footer_left p{
 						font-size:13px;
@@ -557,6 +558,7 @@ span.necessarily{
 .news-title {
 	color: #00919F;
 	font: bold 13px helvetica,arial,sans-serif;
+	margin: 5px 0;
 }
 .news-date {
 	border-bottom: 1px solid #eee;
@@ -564,4 +566,11 @@ span.necessarily{
 	font: 12px helvetica,arial,sans-serif;
 	margin: 3px 0 5px;
 	padding-bottom: 5px;
+}
+strong {
+	font-weight: bold;
+	margin: 5px 0 0;
+}
+.form-send-mail {
+	margin: 10px;
 }

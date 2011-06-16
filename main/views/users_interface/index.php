@@ -1,10 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php $this->load->view('users_interface\head');?>
+<?php $this->load->view('users_interface/head');?>
 <body>
-<?php $this->load->view('users_interface\header');?>
+<?php $this->load->view('users_interface/header');?>
 <div class="container_16">
 	<div class="grid_11 sepline">
+		<div class="box-content">
+			<iframe src="http://player.vimeo.com/video/25181651?color=d6d6d6" width="620" height="349" frameborder="0"></iframe>
+		</div>
 		<div class="box-content services">
 		<?php if($content['imgexist']):?>
 			<img src="<?=$baseurl;?>text/viewimage/<?=$content['id'];?>"class="floated" alt=""/>
@@ -16,10 +19,10 @@
 		</div>
 	</div>
 	<div class="grid_5">
-		<?php $this->load->view('users_interface\rightside');?>
+		<?php $this->load->view('users_interface/rightside');?>
 	</div>
 </div>
 <div class="clear"></div>
-<?php $this->load->view('users_interface\footer');?>
+<?php $this->load->view('users_interface/footer');?>
 </body>
 </html>
