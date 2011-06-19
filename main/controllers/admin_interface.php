@@ -111,7 +111,7 @@ class Admin_interface extends CI_Controller {
 				$_POST['submit'] = NULL;
 				if($_FILES['userfile']['error'] != 4):
 					if($this->uri->segment(4)=='about-me'):
-						$_POST['image'] = $this->resize_img($_FILES['userfile']['tmp_name'],300,400,TRUE);
+						$_POST['image'] = $this->resize_img($_FILES['userfile']['tmp_name'],150,200,TRUE);
 					elseif($this->uri->segment(4)=='contact'):
 						$_POST['image'] = $this->resize_img($_FILES['userfile']['tmp_name'],100,100,TRUE);
 					else:
