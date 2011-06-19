@@ -83,7 +83,7 @@ class Users_interface extends CI_Controller {
 			);
 			
 		if($this->input->post('submit')):
-			$this->form_validation->set_rules('name','"Имя"','required|htmlspecialchars|strip_tags|trim');
+			$this->form_validation->set_rules('name','"Имя"','required|htmlspecialchars|trim');
 			$this->form_validation->set_rules('email','"E-mail"','valid_email|required|trim');
 			$this->form_validation->set_rules('subject','"Тема"','required|trim');
 			$this->form_validation->set_rules('note','"Сообщение"','required|strip_tags');
@@ -95,7 +95,8 @@ class Users_interface extends CI_Controller {
 			else:
 				$_POST['submit'] = NULL;
 				$pagevar['status'] = TRUE;
-				if($this->sendmail($this->user['uemail'],$_POST['note'],$_POST['subject'],$_POST['email'])):
+				$uemail = $this->usermodel->read_field(1,'uemail');
+				if($this->sendmail($uemail,$_POST['note'],$_POST['subject'],$_POST['email'])):
 					$this->session->set_userdata('mail',TRUE);
 					redirect('mail-sucessfull');
 				else:
@@ -478,12 +479,12 @@ class Users_interface extends CI_Controller {
 		$config['charset'] = 'utf-8';
 		$config['wordwrap'] = TRUE;
 		$this->email->initialize($config);
-		$this->email->from($from,'Администрация сайта');
+		$this->email->from($from,'NSP-DON');
 		$this->email->to($email);
 		$this->email->bcc('');
 		$this->email->subject($subject);
 		$this->email->message(strip_tags($msg));
-		if (!$this->email->send()):
+		if(!$this->email->send()):
 			return FALSE;
 		endif;
 		return TRUE;
