@@ -20,7 +20,7 @@
 		<?php for($i=0;$i<count($organs);$i++):?>
 			<div class="grid_3">
 				<div class="organs">
-					<img src="<?=$baseurl;?>sorgans/viewimage/<?=$organs[$i]['id'];?>"class="floated" alt=""/>
+					<?=anchor('organ/'.$organs[$i]['id'],'<img src="'.$baseurl.'sorgans/viewimage/'.$organs[$i]['id'].'" class="floated" alt=""/>');?>
 					<div class="organs-title"><?=anchor('organ/'.$organs[$i]['id'],$organs[$i]['title']);?></div>
 					<div class="organs-content"><?=$organs[$i]['text'];?></div>
 				</div>

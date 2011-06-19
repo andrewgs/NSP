@@ -14,7 +14,8 @@
 		<?php endif;?>
 		<?php for($i=0;$i<count($products);$i++):?>
 			<div class="products">
-				<img src="<?=$baseurl;?>sproduct/viewimage/<?=$products[$i]['id'];?>"class="floated" alt=""/>
+				<?=anchor('organ/'.$organ.'/product/'.$products[$i]['id'],'<img src="'.$baseurl.'sproduct/viewimage/'.$products[$i]['id'].'"class="floated" alt=""/>');?>
+				
 				<div class="products-title"><?=anchor('organ/'.$organ.'/product/'.$products[$i]['id'],$products[$i]['title']);?></div>
 				<div class="products-content"><?=$products[$i]['text'];?></div>
 			</div>
