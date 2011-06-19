@@ -291,8 +291,8 @@ class Admin_interface extends CI_Controller {
 			else:
 				$_POST['submit'] = NULL;
 				if($_FILES['userfile']['error'] != 4):
-					$_POST['image'] = $this->resize_photo($_FILES['userfile']['tmp_name'],250,300,FALSE);
-					$_POST['simage'] = $this->resize_photo($_FILES['userfile']['tmp_name'],150,200,FALSE);
+					$_POST['image'] = $this->resize_img($_FILES['userfile']['tmp_name'],200,200,TRUE);
+					$_POST['simage'] = $this->resize_img($_FILES['userfile']['tmp_name'],100,100,TRUE);
 				else:
 					$_POST['image'] = '';
 				endif;
@@ -324,8 +324,8 @@ class Admin_interface extends CI_Controller {
 			else:
 				$_POST['submit'] = NULL;
 				if($_FILES['userfile']['error'] != 4):
-					$_POST['image'] = $this->resize_photo($_FILES['userfile']['tmp_name'],250,300,FALSE);
-					$_POST['simage'] = $this->resize_photo($_FILES['userfile']['tmp_name'],150,200,FALSE);
+					$_POST['image'] = $this->resize_img($_FILES['userfile']['tmp_name'],200,200,TRUE);
+					$_POST['simage'] = $this->resize_img($_FILES['userfile']['tmp_name'],100,100,TRUE);
 				else:
 					$_POST['image'] = '';
 				endif;
