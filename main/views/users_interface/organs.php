@@ -20,13 +20,11 @@
 		<?php for($i=0;$i<count($organs);$i++):?>
 			<div class="grid_3">
 				<div class="organs">
-					<img src="<?=$baseurl;?>sorgans/viewimage/<?=$organs[$i]['id'];?>"class="floated" alt=""/>
 					<div class="organs-title"><?=anchor('organ/'.$organs[$i]['id'],$organs[$i]['title']);?></div>
-					<div class="organs-content"><?=$organs[$i]['text'];?></div>
+					<img src="<?=$baseurl;?>sorgans/viewimage/<?=$organs[$i]['id'];?>"class="floated" alt=""/>
 				</div>
 			<?php if($userinfo['status']):?>
 				<div class="admin-link"><?=anchor('admin/organs-edit/'.$organs[$i]['id'],'Изменить');?></div>
-				<div class="admin-link"><?=anchor('admin/organs-delete/'.$organs[$i]['id'],'Удалить');?></div>
 			<?php endif;?>
 			</div>
 			<?php if($i>0 and ($i+1)%3==0):?>
