@@ -26,7 +26,7 @@
 				</div>
 			<?php if($userinfo['status']):?>
 				<div class="admin-link"><?=anchor('admin/organs-edit/'.$organs[$i]['id'],'Изменить');?></div>
-				<div class="admin-link"><?=anchor('admin/organs-delete/'.$organs[$i]['id'],'Удалить');?></div>
+				<!--<div class="admin-link"><?=anchor('admin/organs-delete/'.$organs[$i]['id'],'Удалить');?></div>-->
 			<?php endif;?>
 			</div>
 			<?php if($i>0 and ($i+1)%3==0):?>

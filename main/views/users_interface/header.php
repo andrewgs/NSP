@@ -9,12 +9,7 @@
 					<ul class="sf-menu">
 						<li><?=anchor('','Главная');?></li>
 						<li><?=anchor('about-me','Обо мне');?></li>
-						<li><a href="javascript:void(0)">О компании</a>
-							<ul>
-								<li><?=anchor('about-company','Информация');?></li>
-								<li><?=anchor('certificates-company','Сертификаты');?></li>
-							</ul>
-						</li>
+						<li><?=anchor('about-company','О компании');?></li>
 						<li><?=anchor('products','Продукция');?></li>
 					<?php if($userinfo['status']):?>
 						<li><a href="javascript:void(0)">Администратор</a>

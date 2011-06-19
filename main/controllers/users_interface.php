@@ -45,7 +45,7 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - Главная',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -73,7 +73,7 @@ class Users_interface extends CI_Controller {
 	
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - Обо мне',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -126,7 +126,7 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - О компании',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -150,7 +150,7 @@ class Users_interface extends CI_Controller {
 		$this->load->view('users_interface/aboutcompany',$pagevar);
 	}
 	
-	function certificates(){
+	/*function certificates(){
 	
 		$pagevar = array(
 					'description'	=> '',
@@ -178,13 +178,13 @@ class Users_interface extends CI_Controller {
 		endfor;
 		
 		$this->load->view('users_interface/certificates',$pagevar);	
-	}
+	}*/
 	
 	function organs(){
 	
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - Продукция',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -197,8 +197,8 @@ class Users_interface extends CI_Controller {
 		
 		for($i=0;$i<count($pagevar['organs']);$i++):
 			$pagevar['organs'][$i]['full_text'] = $pagevar['organs'][$i]['text'];
-			if(mb_strlen($pagevar['organs'][$i]['text'],'UTF-8') > 250):									
-				$pagevar['organs'][$i]['text'] = mb_substr($pagevar['organs'][$i]['text'],0,250,'UTF-8');	
+			if(mb_strlen($pagevar['organs'][$i]['text'],'UTF-8') > 150):									
+				$pagevar['organs'][$i]['text'] = mb_substr($pagevar['organs'][$i]['text'],0,150,'UTF-8');	
 				$pos = mb_strrpos($pagevar['organs'][$i]['text'],' ',0,'UTF-8');
 				$pagevar['organs'][$i]['text'] = mb_substr($pagevar['organs'][$i]['text'],0,$pos,'UTF-8');
 				$pagevar['organs'][$i]['text'] .= ' ... ';
@@ -225,17 +225,15 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - Каталог товаров',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'organ'			=> array(),
+					'organ'			=> $this->uri->segment(2),
 					'products'		=> array(),
 					'contacts'		=> array(),
 					'news'			=> array(),
 			);
-		$organ = $this->uri->segment(2);
-		$pagevar['organ'] = $this->organsmodel->read_record($organ);
-		$pagevar['products'] = $this->productsmodel->read_records($organ);
+		$pagevar['products'] = $this->productsmodel->read_records($pagevar['organ']);
 		
 		for($i=0;$i<count($pagevar['products']);$i++):
 			$pagevar['products'][$i]['full_text'] = $pagevar['products'][$i]['text'];
@@ -267,7 +265,7 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - Продукт',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'product'		=> array(),
@@ -296,7 +294,7 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON Новости',
+					'title'			=> 'NSP-DON - Новости',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -326,7 +324,7 @@ class Users_interface extends CI_Controller {
 		
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON Список новостей',
+					'title'			=> 'NSP-DON - Список новостей',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'content'		=> array(),
@@ -400,7 +398,7 @@ class Users_interface extends CI_Controller {
 	
 		$pagevar = array(
 					'description'	=> '',
-					'title'			=> 'NSP-DON',
+					'title'			=> 'NSP-DON - Аторизация',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'error'			=> FALSE

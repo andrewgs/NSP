@@ -9,20 +9,13 @@
 			<div class="back">
 				<?=anchor('products','Вернуться к списку огранов');?>
 			</div>
-			<div class="organ">
-				<img src="<?=$baseurl;?>organs/viewimage/<?=$organ['id'];?>"class="floated" alt=""/>
-				<div class="organ-title"><?=$organ['title'];?></div>
-				<div class="organ-content"><?=$organ['text'];?></div>
-			</div>
-			<div class="clear"></div>
-			<hr size="2"/>
 		<?php if($userinfo['status']):?>
 			<div class="admin-link"><?=anchor('admin/'.$this->uri->uri_string().'/product-add','Добавить продукт');?></div>
 		<?php endif;?>
 		<?php for($i=0;$i<count($products);$i++):?>
 			<div class="products">
 				<img src="<?=$baseurl;?>sproduct/viewimage/<?=$products[$i]['id'];?>"class="floated" alt=""/>
-				<div class="products-title"><?=anchor('organ/'.$organ['id'].'/product/'.$products[$i]['id'],$products[$i]['title']);?></div>
+				<div class="products-title"><?=anchor('organ/'.$organ.'/product/'.$products[$i]['id'],$products[$i]['title']);?></div>
 				<div class="products-content"><?=$products[$i]['text'];?></div>
 			</div>
 			<?php if($userinfo['status']):?>
